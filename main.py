@@ -161,4 +161,5 @@ def interactive_menu():
             print("Unknown option, try again.")
     print("Exiting the menu.")
 
+
 interactive_menu()
