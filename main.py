@@ -87,11 +87,39 @@ def test_get_perfect_squares():
     assert get_perfect_squares(26, 35) == []
 
 
+def is_superprime(n):
+    clone = n
+    while n > 0:
+        if not is_prime(n):
+            return False
+        n //= 10
+    if clone <= 0:
+        return False
+    else:
+        return True
+    '''
+    Tests if a number is a 'superprime'. A number is a 'superprime' if all its prefixes are primes, including the given number.
+    :param n: Input number to be checked if it's 'superprime'.
+    :return: True if the number it's 'superprime', false otherwise.
+    '''
+
+
+def test_is_superprime():
+    assert is_superprime(12) is False
+    assert is_superprime(-5) is False
+    assert is_superprime(2) is True
+    assert is_superprime(233) is True
+    assert is_superprime(37) is True
+    assert is_superprime(373) is True
+    assert is_superprime(3731) is False
+
+
 def show_options():
     print('''
     1.Compute largest prime below 'n'.
     2.Compute all perfect squares between 'start' and 'end'. 
-    3.Exit the interactive menu.
+    3.Determine if a number is a superprime.
+    4.Exit the interactive menu.
     ''')
 
 
@@ -106,9 +134,15 @@ def compute_bounded_squares_option():
     print(f"The perfect squares bounded by {start} and {end} are: {get_perfect_squares(start, end)}.")
 
 
+def determine_if_superprime_option():
+    n = int(input("Your number 'n' is:"))
+    print(f"{n} is super prime? A:{is_superprime(n)}")
+
+
 test_is_prime()
 test_get_largest_prime_below()
 test_get_perfect_squares()
+test_is_superprime()
 
 
 def interactive_menu():
@@ -119,11 +153,12 @@ def interactive_menu():
             compute_largest_prime_option()
         if option == '2':
             compute_bounded_squares_option()
-        elif option == "3":
+        if option == '3':
+            determine_if_superprime_option()
+        elif option == "4":
             break
         else:
             print("Unknown option, try again.")
     print("Exiting the menu.")
-
 
 interactive_menu()
