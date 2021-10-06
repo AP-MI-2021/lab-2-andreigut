@@ -151,9 +151,9 @@ def interactive_menu():
         option = input("Your option is:")
         if option == '1':
             compute_largest_prime_option()
-        if option == '2':
+        elif option == '2':
             compute_bounded_squares_option()
-        if option == '3':
+        elif option == '3':
             determine_if_superprime_option()
         elif option == "4":
             break
